@@ -35,7 +35,6 @@ Built a `scikit-learn` pipeline to scale numerical features (`StandardScaler`) a
 * **Random Forest Classifier** (Tree-based Model)
 
 ## 📈 Key Results
-## 📈 Key Results
 
 The models were evaluated based on their ability to minimize financial loss (Precision) while maximizing approved business (Recall). 
 
