@@ -124,3 +124,28 @@ def evaluate_model(name, model, X_test, y_test):
 
 evaluate_model("Logistic Regression (Baseline)", lr_pipeline, X_test, y_test)
 evaluate_model("Random Forest", rf_pipeline, X_test, y_test)
+
+# ---------------------------------------------------------
+# 6. VISUALIZATION (Feature Importance)
+# ---------------------------------------------------------
+import matplotlib.pyplot as plt
+
+# Get feature names from the preprocessor
+num_features = num_cols.tolist()
+cat_features = preprocessor.named_transformers_['cat'].named_steps['onehot'].get_feature_names_out(cat_cols).tolist()
+all_features = num_features + cat_features
+
+# Get feature importances from the Random Forest model
+importances = rf_pipeline.named_steps['classifier'].feature_importances_
+
+# Create a DataFrame and sort it
+feat_imp_df = pd.DataFrame({'Feature': all_features, 'Importance': importances})
+feat_imp_df = feat_imp_df.sort_values(by='Importance', ascending=True).tail(10) # Top 10 features
+
+# Plot
+plt.figure(figsize=(10, 6))
+plt.barh(feat_imp_df['Feature'], feat_imp_df['Importance'], color='steelblue')
+plt.title('Top 10 Most Important Features for Loan Approval')
+plt.xlabel('Relative Importance')
+plt.tight_layout()
+plt.show()
