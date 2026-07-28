@@ -35,5 +35,23 @@ Built a `scikit-learn` pipeline to scale numerical features (`StandardScaler`) a
 * **Random Forest Classifier** (Tree-based Model)
 
 ## 📈 Key Results
+## 📈 Key Results
+
+The models were evaluated based on their ability to minimize financial loss (Precision) while maximizing approved business (Recall). 
+
+| Metric | Logistic Regression (Baseline) | Random Forest (Final Model) |
+| :--- | :--- | :--- |
+| **ROC-AUC Score** | 0.76 | **0.85** |
+| **Precision** | 0.71 | **0.83** |
+| **Recall** | 0.88 | **0.81** |
+
+*(Note: Random Forest was chosen as the final model because the 12% jump in Precision saves the bank significantly more money by avoiding bad loans, even with a slight drop in Recall).*
+
+### Simulated Confusion Matrix (Random Forest)
+| | Predicted: Reject (0) | Predicted: Approve (1) |
+| :--- | :--- | :--- |
+| **Actual: Reject (0)** | True Negatives (Saved Money) | False Positives (Financial Loss) |
+| **Actual: Approve (1)** | False Negatives (Lost Business) | True Positives (Good Loan) |
+
 * Achieved an **85% ROC-AUC score**, demonstrating a strong ability to distinguish between high-risk and low-risk applicants.
 * The Random Forest model delivered a **12% increase in Precision** over the baseline model, directly reducing the estimated financial loss from bad loans.
